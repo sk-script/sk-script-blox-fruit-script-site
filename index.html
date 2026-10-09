@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SK_SCRIPTS</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&display=swap');
+
+:root{
+  --bg:#050208;
+  --card:#0d0812;
+  --red:#ff1744;
+  --purple:#a855f7;
+  --text:#f5f0f5;
+  --muted:#9b8fa3;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at 50% -10%,#3d0015 0,transparent 35%),var(--bg);
+  color:var(--text);
+  font-family:Inter,Arial,sans-serif;
+}
+
+#loader{
+  position:fixed;inset:0;background:#050208;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;z-index:9999;transition:opacity .8s;
+}
+
+.loader-logo,.logo{
+  font-weight:900;
+  background:linear-gradient(90deg,var(--red),var(--purple));
+  -webkit-background-clip:text;color:transparent;
+}
+
+.loader-logo{font-size:3rem}
+
+.loader-percent{
+  margin-top:18px;
+  color:var(--red);
+  font-size:1.3rem;
+  font-weight:800;
+}
+
+.wrapper{max-width:900px;margin:auto;padding:45px 18px;opacity:0}
+.wrapper.show{animation:fade .8s forwards}
+@keyframes fade{to{opacity:1}}
+
+.header{text-align:center;margin-bottom:35px}
+.logo{font-size:clamp(2.2rem,8vw,3.5rem)}
+.subtitle{color:var(--muted);margin-top:10px}
+
+.tags{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.tag{
+  padding:7px 13px;
+  border:1px solid #ff174450;
+  border-radius:20px;
+  color:var(--red);
+  background:#ff174410;
+  font-size:11px;
+  font-weight:800;
+}
+
+.card{
+  background:linear-gradient(145deg,#120914,#08050b);
+  border:1px solid #ff174460;
+  border-radius:22px;
+  padding:25px;
+  box-shadow:0 0 35px #ff174415,0 0 60px #a855f710;
+}
+
+.card-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:18px;
+}
+
+.card-title{font-size:1.25rem;font-weight:900}
+
+.version{
+  background:linear-gradient(90deg,var(--red),var(--purple));
+  color:#fff;
+  padding:6px 11px;
+  border-radius:8px;
+  font-size:10px;
+  font-weight:900;
+}
+
+.copy-stats{
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:15px;
+}
+
+.copy-stats span{
+  color:var(--red);
+  font-weight:900;
+}
+
+.code-wrap{
+  position:relative;
+  background:#030105;
+  border:1px solid #ff174440;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.code-label{
+  padding:10px 15px;
+  background:#0c0710;
+  color:var(--muted);
+  font-size:11px;
+  border-bottom:1px solid #ffffff08;
+}
+
+pre{
+  padding:20px;
+  overflow-x:auto;
+  color:#ddd4df;
+  font:13px/1.7 monospace;
+  white-space:pre-wrap;
+  word-break:break-all;
+}
+
+.actions{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:20px;
+}
+
+.btn{
+  width:100%;
+  padding:15px;
+  border:0;
+  border-radius:12px;
+  font-size:15px;
+  font-weight:900;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.copy{
+  background:linear-gradient(90deg,var(--red),var(--purple));
+  color:#fff;
+}
+
+.discord{
+  background:#7c3aed;
+  color:white;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.08);
+}
+
+.btn:active{
+  transform:scale(.98);
+}
+
+footer{
+  margin-top:50px;
+  padding:25px;
+  text-align:center;
+  border-top:1px solid #ff174425;
+  color:#6f6375;
+  font-size:12px;
+}
+
+@media(max-width:500px){
+  .card{padding:18px}
+  .card-header{align-items:flex-start}
+  pre{font-size:12px}
+}
+</style>
+</head>
+
+<body>
+
+<div id="loader">
+  <div class="loader-logo">SK_SCRIPTS</div>
+  <div class="loader-percent" id="percent">0%</div>
+</div>
+
+<main class="wrapper" id="main">
+
+  <header class="header">
+    <div class="logo">SK_SCRIPTS</div>
+
+    <p class="subtitle">
+      Trusted Roblox Scripts Community
+    </p>
+
+    <div class="tags">
+      <div class="tag">🔥 HOT KEYLESS</div>
+    </div>
+  </header>
+
+  <section class="card">
+
+    <div class="card-header">
+      <div class="card-title">Blox Fruits Script</div>
+      <div class="version">v2.4.1</div>
+    </div>
+
+    <div class="copy-stats">
+      ðŸ“Š <span id="copyCount">11048202948</span> Copies
+    </div>
+
+    <div class="code-wrap">
+
+      <div class="code-label">
+        LUA SCRIPT
+      </div>
+
+      <pre id="scriptCode">loadstring(game:HttpGet("https://raw.githubusercontent.com/sk-script/blox-fruit-scripts/refs/heads/main/.lua"))()</pre>
+
+    </div>
+
+    <div class="actions">
+
+      <button class="btn copy" id="copyBtn" onclick="copyScript()">
+       ‹ COPY SCRIPT
+      </button>
+
+      <button class="btn discord" onclick="joinDiscord()">
+        JOIN DISCORD
+      </button>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+   SK_SCRIPTS Official
+</footer>
+
+<script>
+
+let percent = 0;
+let copyCount = 1324;
+
+const loader = document.getElementById("loader");
+const main = document.getElementById("main");
+const percentEl = document.getElementById("percent");
+const copyCountEl = document.getElementById("copyCount");
+const copyBtn = document.getElementById("copyBtn");
+
+const loading = setInterval(() => {
+
+  percent += Math.floor(Math.random() * 8) + 4;
+
+  if(percent >= 100){
+
+    percent = 100;
+    clearInterval(loading);
+
+    setTimeout(() => {
+
+      loader.style.opacity = "0";
+      main.classList.add("show");
+
+      setTimeout(() => {
+        loader.style.display = "none";
+      },800);
+
+    },400);
+  }
+
+  percentEl.textContent = percent + "%";
+
+},70);
+
+function copyScript(){
+
+  const code = document.getElementById("scriptCode").innerText;
+
+  navigator.clipboard.writeText(code).then(() => {
+
+    copyCount++;
+
+    copyCountEl.textContent =
+      copyCount.toLocaleString();
+
+    copyBtn.textContent = " COPIED!";
+
+    setTimeout(() => {
+      copyBtn.textContent = "‹ COPY SCRIPT";
+    },2000);
+
+  });
+}
+
+function joinDiscord(){
+
+  window.open(
+    "https://discord.gg/gTHwfyf7fc",
+    "_blank"
+  );
+
+}
+
+</script>
+
+</body>
+  </html>
